@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import api from "../utils/api";
+import Icon from "../components/Sangho/Icon";
 
 function Home() {
 	const [data, setData] = useState();
