@@ -11,8 +11,8 @@ import MyPage from "./pages/myPage";
 import Poem from "./pages/poem";
 import NotFound from "./pages/404";
 import Search from "./pages/Search";
-import TagSearchList from "./components/Sangho/TagSearchList";
-import Detail from "./components/Sangho/Detail";
+import TagSearchList from "./components/etc/TagSearchList";
+import Detail from "./components/etc/Detail";
 import "./styles/mvp.css";
 import router from "./router";
 

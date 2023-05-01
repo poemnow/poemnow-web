@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import Icon from "./Icon";
+import Icon from "../Atoms/Icon";
 
 const HeaderContainer = styled.div`
 	display: flex;

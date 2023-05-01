@@ -1,12 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import App from "./App";
-import theme from "./styles/theme";
-import ResetStyle from "./styles/reset";
+import { createGlobalStyle } from "styled-components";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-const GlobalStyle = createGlobalStyle`
+const ResetStyle = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -58,18 +52,6 @@ table {
 }
 /* 반응형 디자인을 위해 텍스트를 10px로 수정 */
 font-size: 10px;
-
-:root {
-  --margin-lg: 32px;
-}
 `;
 
-root.render(
-	<React.StrictMode>
-		<ResetStyle />
-
-		<ThemeProvider theme={theme}>
-			<App />
-		</ThemeProvider>
-	</React.StrictMode>
-);
+export default ResetStyle;
