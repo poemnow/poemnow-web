@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import Text from "../Sangho/Text";
 
 const CommentCardStyled = styled.div`
   display: flex;
@@ -25,10 +26,14 @@ const CommentCard = ({ author, createdAt }) => {
     <Link to="/">
       <CommentCardStyled>
         <CommentHeader>
-          <CommentAuthor>by.{author}</CommentAuthor>
+          <CommentAuthor>시 제목 by.작가이름{author}</CommentAuthor>
         </CommentHeader>
-        <span>댓글 내용이 나와야 함</span>
-        <span>{createdAt}</span>
+        <div>
+          <Text>댓글 내용이 나와야 함</Text>
+        </div>
+        <div>
+          <Text>2023.05.01{createdAt}</Text>
+        </div>
       </CommentCardStyled>
     </Link>
   );

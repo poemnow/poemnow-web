@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
+import H3 from "../Sangho/H3";
+import Text from "../Sangho/Text";
 
 const ToggleButton = styled.button`
   background-color: ${({ active }) => (active ? "blue" : "grey")};
@@ -11,7 +13,9 @@ const ToggleButton = styled.button`
   cursor: pointer;
 `;
 
-const App = () => {
+const WriteOptionStyled = styled.div``;
+
+const WriteOption = () => {
   const [isPublic, setIsPublic] = useState(true);
 
   const handlePublicToggle = () => {
@@ -23,15 +27,25 @@ const App = () => {
   };
 
   return (
-    <div>
+    <WriteOptionStyled>
+      <H3>발행 옵션</H3>
+      <Text>공개 설정</Text>
       <ToggleButton active={isPublic} onClick={handlePublicToggle}>
         공개
       </ToggleButton>
       <ToggleButton active={!isPublic} onClick={handlePrivateToggle}>
         비공개
       </ToggleButton>
-    </div>
+      <Text>작가 설정</Text>
+      <ToggleButton active={isPublic} onClick={handlePublicToggle}>
+        필명 표기
+      </ToggleButton>
+      <ToggleButton active={!isPublic} onClick={handlePrivateToggle}>
+        익명 표기
+      </ToggleButton>
+      <Text>태그 편집</Text>
+    </WriteOptionStyled>
   );
 };
 
-export default App;
+export default WriteOption;
