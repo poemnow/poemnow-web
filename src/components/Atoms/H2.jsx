@@ -4,6 +4,6 @@ const H2Styled = styled.h2`
 	font-size: var(--h2);
 `;
 
-export default function H2({ children, test }) {
+export default function H2({ children }) {
 	return <H2Styled>{children}</H2Styled>;
 }
