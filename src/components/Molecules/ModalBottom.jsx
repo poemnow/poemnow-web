@@ -17,34 +17,34 @@ const ModalContainer = styled.div``;
  */
 
 export default function ModalBottom(props) {
-	const { toggleModal } = props;
+  const { toggleModal } = props;
 
-	let scrollPosition = 0;
+  let scrollPosition = 0;
 
-	useEffect(() => {
-		scrollPosition = window.pageYOffset;
-		document.body.style.overflow = "hidden";
-		document.body.style.position = "fixed";
-		document.body.style.top = `-${scrollPosition}px`;
-		document.body.style.width = "100%";
+  useEffect(() => {
+    scrollPosition = window.pageYOffset;
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollPosition}px`;
+    document.body.style.width = "100%";
 
-		return () => {
-			document.body.style.removeProperty("overflow");
-			document.body.style.removeProperty("position");
-			document.body.style.removeProperty("top");
-			document.body.style.removeProperty("width");
-			window.scrollTo(0, scrollPosition);
-		};
-	});
+    return () => {
+      document.body.style.removeProperty("overflow");
+      document.body.style.removeProperty("position");
+      document.body.style.removeProperty("top");
+      document.body.style.removeProperty("width");
+      window.scrollTo(0, scrollPosition);
+    };
+  });
 
-	return (
-		<ModalWindow>
-			<ModalContainer>
-				<Button>프로필 수정</Button>
-				<Button>로그아웃</Button>
-				<Button>회원탈퇴</Button>
-				<Button onClick={toggleModal}>취소</Button>
-			</ModalContainer>
-		</ModalWindow>
-	);
+  return (
+    <ModalWindow>
+      <ModalContainer>
+        <Button>프로필 수정</Button>
+        <Button>로그아웃</Button>
+        <Button>회원탈퇴</Button>
+        <Button onClick={toggleModal}>취소</Button>
+      </ModalContainer>
+    </ModalWindow>
+  );
 }

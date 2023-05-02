@@ -1,3 +1,3 @@
 export default function Detail() {
-	return <div>Hi im detail</div>;
+  return <div>Hi im detail</div>;
 }

@@ -4,24 +4,24 @@
 const pixelToRem = (pixel) => `${pixel / 10}rem`;
 
 const fontSize = {
-	h1: pixelToRem(64),
-	h2: pixelToRem(48),
+  h1: pixelToRem(64),
+  h2: pixelToRem(48),
 };
 
 const color = {};
 
 const padding = {
-	xs: pixelToRem(4),
-	sm: pixelToRem(8),
-	md: pixelToRem(16),
-	lg: pixelToRem(32),
-	xl: pixelToRem(64),
+  xs: pixelToRem(4),
+  sm: pixelToRem(8),
+  md: pixelToRem(16),
+  lg: pixelToRem(32),
+  xl: pixelToRem(64),
 };
 
 const theme = {
-	fontSize,
-	color,
-	padding,
+  fontSize,
+  color,
+  padding,
 };
 
 export default theme;

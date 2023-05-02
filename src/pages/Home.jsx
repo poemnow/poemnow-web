@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 const HomeContainer = styled.div`
-	display: flex;
+  display: flex;
 `;
 
 function Home() {
-	return <HomeContainer></HomeContainer>;
+  return <HomeContainer></HomeContainer>;
 }
 
 export default Home;

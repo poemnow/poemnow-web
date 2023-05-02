@@ -5,15 +5,15 @@ import ConditionBar from "../components/etc/ConditionBar";
 import Tab from "../components/Molecules/Tag";
 
 export default function Search() {
-	return (
-		<div>
-			<Tab matchWord={"tag"} index={2}>
-				태그
-			</Tab>
-			<SearchBar />
-			<ChoiceBar />
-			<ConditionBar />
-			<Outlet />
-		</div>
-	);
+  return (
+    <div>
+      <Tab matchWord={"tag"} index={2}>
+        태그
+      </Tab>
+      <SearchBar />
+      <ChoiceBar />
+      <ConditionBar />
+      <Outlet />
+    </div>
+  );
 }
