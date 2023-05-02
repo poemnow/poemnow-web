@@ -21,7 +21,7 @@ const BookCoverInnerStyled = styled.div`
 	justify-content: center;
 `;
 
-export default function BookCover({ title, writer }) {
+export default function BookCover({ title, writer, test }) {
 	return (
 		<BookCoverOuterStyled>
 			<BookCoverInnerStyled>
