@@ -3,11 +3,11 @@ import styled from "styled-components";
 import H6 from "../Atoms/H6";
 
 const TabContainer = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 128px;
-	border-bottom: ${(props) => props.isHere};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  border-bottom: ${(props) => props.isHere};
 `;
 
 /*
@@ -19,11 +19,11 @@ const TabContainer = styled.div`
  */
 
 export default function Tab({ children, matchWord, index }) {
-	const location = useLocation();
-	const curUrl = location.pathname.split("/").at(index);
-	return (
-		<TabContainer isHere={curUrl === matchWord ? "1px solid black" : null}>
-			<H6>{children}</H6>
-		</TabContainer>
-	);
+  const location = useLocation();
+  const curUrl = location.pathname.split("/").at(index);
+  return (
+    <TabContainer isHere={curUrl === matchWord ? "1px solid black" : null}>
+      <H6>{children}</H6>
+    </TabContainer>
+  );
 }
