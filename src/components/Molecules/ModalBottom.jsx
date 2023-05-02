@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import Button from "../Atoms/Button";
-import { useState, useCallback } from "react";
 import { useEffect } from "react";
 
 const ModalWindow = styled.div``;

@@ -1,9 +1,4 @@
-import {
-	RouterProvider,
-	BrowserRouter as Router,
-	Routes,
-	Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/login";
 import Register from "./pages/register";
@@ -14,7 +9,6 @@ import Search from "./pages/Search";
 import TagSearchList from "./components/etc/TagSearchList";
 import Detail from "./components/etc/Detail";
 import "./styles/mvp.css";
-import router from "./router";
 
 function App() {
 	return (
