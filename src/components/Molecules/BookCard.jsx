@@ -14,21 +14,21 @@ const BookCardStyle = styled.div`
   }
 `;
 
-export default function BookCard() {
+export default function BookCard({ book }) {
   return (
     <BookCardStyle>
       <span>
-        <H2>나의 시집</H2>
-        <Text>이것은 저의 첫 번째 시집입니다.</Text>
+        <H2>{book.title}</H2>
+        <Text>{book.bookDetail}</Text>
         <div>
           <span>
-            <ProfileImage>프로필 이미지 자리</ProfileImage>
+            <ProfileImage src={book.userProfileImage}></ProfileImage>
           </span>
           <span>
-            <Text>작가이름</Text>
+            <Text>{book.userName}</Text>
           </span>
           <span>
-            <Date>2023.04.25</Date>
+            <Date>{book.createdAt}</Date>
           </span>
         </div>
         <div>
@@ -40,7 +40,7 @@ export default function BookCard() {
             </Icon>
           </span>
           <span>
-            <Text>좋아요수127</Text>
+            <Text>{book.likeCnt}</Text>
           </span>
           <span>
             <Icon>
@@ -50,7 +50,7 @@ export default function BookCard() {
             </Icon>
           </span>
           <span>
-            <Text>댓글수32</Text>
+            <Text>{book.commentCnt}</Text>
           </span>
         </div>
       </span>
