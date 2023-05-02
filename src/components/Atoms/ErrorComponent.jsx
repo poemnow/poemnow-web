@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const ErrorStyle = styled.div`
-  color: red;
+	color: red;
 `;
 
 export default function ErrorComponent({ message }) {
-  return message ? <ErrorStyle>{message}</ErrorStyle> : null;
+	return message ? <ErrorStyle>{message}</ErrorStyle> : null;
 }
