@@ -2,6 +2,9 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalVariableStyle = createGlobalStyle`
 :root {
+  // fot
+  --h1: 64px;
+  --h2: 48px;
   // color
   --primary: "red";
   --secondary: "ivory";

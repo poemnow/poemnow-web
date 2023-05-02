@@ -4,7 +4,7 @@ import styled from "styled-components";
 const InputStyle = styled.input``;
 
 function Input(props) {
-  return <InputStyle></InputStyle>;
+	return <InputStyle></InputStyle>;
 }
 
 export default Input;
