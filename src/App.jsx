@@ -6,6 +6,7 @@ import MyPage from "./pages/myPage";
 import Poem from "./pages/poem";
 import NotFound from "./pages/404";
 import Search from "./pages/Search";
+import Withdraw from "./pages/withdraw1";
 import TagSearchList from "./components/etc/TagSearchList";
 import Detail from "./components/etc/Detail";
 import "./styles/mvp.css";
@@ -20,6 +21,8 @@ function App() {
           <Route path="/myPage" element={<MyPage />} />
           <Route path="/poem" element={<Poem />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/withdraw1" element={<Withdraw />} />
+          <Route path="/withdraw2" element={<Withdraw />} />
           {/* <Route path="/updateProfile" element={<UpdateProfile />} /> */}
           {/* search 페이지를 위한 라우팅 */}
           <Route path="/search" element={<Search />}>
