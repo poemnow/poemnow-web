@@ -42,7 +42,7 @@ const Comment = ({ author, content, createdAt }) => {
       </span>
       <span>
         <Icon
-          value={
+          children={
             <span
               onClick={() => setIsLiked(!isLiked)}
               style={{ cursor: "pointer" }}
