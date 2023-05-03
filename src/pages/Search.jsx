@@ -1,15 +1,19 @@
 import { Outlet } from "react-router-dom";
-import SearchBar from "../components/Sangho/SearchBar";
-import ChoiceBar from "../components/Sangho/ChoiceBar";
-import ConditionBar from "../components/Sangho/ConditionBar";
+import SearchBar from "../components/etc/SearchBar";
+import ChoiceBar from "../components/etc/ChoiceBar";
+import ConditionBar from "../components/etc/ConditionBar";
+import Tab from "../components/Molecules/Tag";
 
 export default function Search() {
-	return (
-		<div>
-			<SearchBar />
-			<ChoiceBar />
-			<ConditionBar />
-			<Outlet />
-		</div>
-	);
+  return (
+    <div>
+      <Tab matchWord={"tag"} index={2}>
+        태그
+      </Tab>
+      <SearchBar />
+      <ChoiceBar />
+      <ConditionBar />
+      <Outlet />
+    </div>
+  );
 }

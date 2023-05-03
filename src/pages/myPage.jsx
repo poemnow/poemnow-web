@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ModalButton from "../components/배영석/ModalButton";
-import CategoryButton from "../components/배영석/CategoryButton";
-import Button from "../components/Button";
+import ModalButton from "../components/etc/ModalButton";
+import CategoryButton from "../components/etc/CategoryButton";
 
 function MyPage() {
   const [user, setUser] = useState(null);
