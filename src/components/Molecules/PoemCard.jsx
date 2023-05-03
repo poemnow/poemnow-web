@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import H3 from "../Atoms/H5";
+import H3 from "../Atoms/H3";
 import Icon from "../Atoms/Icon";
 import Text from "../Atoms/Text";
 import ProfileImage from "../Atoms/ProfileImage";
@@ -18,14 +18,14 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-function PoemCard() {
+function PoemCard({ poem, user }) {
   return (
     <PoemCardContainer>
-      <H3>제목</H3>
-      <Text>미리보기</Text>
+      <H3>제목{poem.title}</H3>
+      <Text>미리보기{poem.content}</Text>
       <Container>
-        <ProfileImage>프로필이미지</ProfileImage>
-        <Text>작가이름</Text>
+        <ProfileImage>프로필이미지{user.profilePic}</ProfileImage>
+        <Text>작가이름{user.userNickname}</Text>
         <Date>2022</Date>
       </Container>
       <Container>
@@ -37,7 +37,7 @@ function PoemCard() {
           </Icon>
         </span>
         <span>
-          <text>좋아요수</text>
+          <text>좋아요수{poem.likeCnt}</text>
         </span>
         <span>
           <Icon>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import H6 from "../Sangho/H6";
-import Tag from "../hyeon/Tag";
+import H6 from "../Atoms/H6";
+import Tag from "../Atoms/Tag";
 import api from "../../utils/api";
 
 const ATag = styled.a`
