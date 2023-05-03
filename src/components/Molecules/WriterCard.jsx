@@ -21,16 +21,16 @@ const HeartContainer = styled.div`
   justify-content: center;
 `;
 
-function WriterCard() {
+function WriterCard({ user }) {
   return (
     <WriterCardContainer>
       <ProfileContainer>
         <span>
-          <ProfileImage>프로필이미지</ProfileImage>
+          <ProfileImage src={user.profilePic}>프로필이미지</ProfileImage>
         </span>
         <span>
-          <H2>작가명</H2>
-          <text>작가설명</text>
+          <H2>작가명{user.userNickname}</H2>
+          <text>작가설명{user.bio}</text>
         </span>
       </ProfileContainer>
       <HeartContainer>
@@ -42,7 +42,7 @@ function WriterCard() {
           </Icon>
         </span>
         <span>
-          <text>좋아요수</text>
+          <text>팔로워수{user.followerCnt}</text>
         </span>
       </HeartContainer>
     </WriterCardContainer>
