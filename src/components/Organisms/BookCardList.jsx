@@ -4,7 +4,7 @@ import BookCard from "../Molecules/BookCard";
 
 const BookCardListStyle = styled.ul``;
 
-export default function BookCardList() {
+export default function BookCardList({ bookList }) {
   return (
     <BookCardListStyle>
       {bookList &&
