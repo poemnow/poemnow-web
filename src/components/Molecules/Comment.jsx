@@ -23,6 +23,7 @@ const CommentAuthor = styled.span`
 
 const CommentContent = styled.p`
   margin: 10px 0;
+  padding: 16px;
 `;
 
 const Comment = ({ author, content, createdAt }) => {
