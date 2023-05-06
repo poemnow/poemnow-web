@@ -1,13 +1,21 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ModalButton from "../components/etc/ModalButton";
-import CategoryButton from "../components/etc/CategoryButton";
+import Button from "../components/Atoms/Button";
+import ProfileImage from "../components/Atoms/ProfileImage";
+import P from "../components/Atoms/P";
+import H3 from "../components/Atoms/H3";
+import TabBar from "../components/Organisms/TabBar";
+import PoemCardList from "../components/Organisms/PoemCardList";
+import BookCardList from "../components/Organisms/BookCardList";
 
 function MyPage() {
   const [user, setUser] = useState(null);
   const [followerCount, setFollowerCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
   const [userInfo, setUserInfo] = useState(null);
+  const [selected, setSelected] = useState("poem");
+  const [bookList, setBookList] = useState(null);
+  const [poemList, setPoemList] = useState(null);
 
   useEffect(() => {
     fetch("/api/user")
@@ -34,47 +42,66 @@ function MyPage() {
     }
   }, []);
 
+  useEffect(() => {
+    fetch("/api/bookList/{userInfo.id}")
+      .then((response) => response.json())
+      .then((data) => setBookList(data));
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/poemList/{userInfo.id}")
+      .then((response) => response.json())
+      .then((data) => setPoemList(data));
+  }, []);
+
   return (
     <div>
       {/* 최상단 부분 -> 모달 버튼과 찜하기 버튼이 들어갑니다. */}
       <div>
         <Link to="/like">
-          <button>찜 목록</button>
+          <Button>찜 목록</Button>
         </Link>
-        <ModalButton />
       </div>
       {/* 중간 부분 -> 프로필 이미지, 닉네임, 자기소개*/}
       <div>
         <div>
           {/* 프로필 이미지 */}
-          {user && <img src={user.profileImage} />}
+          {user && <ProfileImage src={user.profileImage} alt="프로필 이미지" />}
         </div>
         {/* 닉네임과 자기소개 */}
         <div>
-          <h3>작가명 :{user && user.nickname}</h3>
-          <p>자기소개 : {user && user.bio}</p>
-          <p>SNS : {user && user.social_url} </p>
+          <H3>작가명 :{user && user.nickname}</H3>
+          <P>자기소개 : {user && user.bio}</P>
+          <P>SNS : {user && user.social_url} </P>
         </div>
       </div>
       {/* 바로 아래 -> 구독자 수, 관심작가 수, 책쓰기 버튼  */}
       <div>
         <div>
           <Link to="/follower">
-            <button>구독자 수 : {followerCount}</button>
+            <Button>구독자 수 : {followerCount}</Button>
           </Link>
           <Link to="/following">
-            <button>관심작가 수 : {followingCount}</button>
+            <Button>관심작가 수 : {followingCount}</Button>
           </Link>
         </div>
         <div>
           <Link to="/write/poem">
-            <button>시 쓰기</button>
+            <Button>시 쓰기</Button>
           </Link>
         </div>
       </div>
       <div>
-        <CategoryButton />
+        <TabBar
+          TabList={["시", "시집"]}
+          state={selected}
+          setState={setSelected}
+        />
       </div>
+      {/* 아랫부분은 시, 혹은 시집이 나온다.
+      현재 URL에 따라 다른 결과를 출력한다. */}
+      {selected === "poem" && <PoemCardList poemList={poemList} />}
+      {selected === "book" && <BookCardList bookList={bookList} />}
 
       {/* 시 / 시집 선택 화면 */}
       {/* 시 / 시집 리스트 */}
