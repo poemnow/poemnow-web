@@ -2,9 +2,26 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalVariableStyle = createGlobalStyle`
 :root {
-  // fot
-  --h1: 64px;
-  --h2: 48px;
+  // font size
+  --mobile-h1: 42px;
+  --mobile-h2: 36px;
+  --mobile-h3-bold: 24px;
+  --mobile-h3-medium: 24px;
+  --mobile-h4-bold: 20px;
+  --mobile-h4-medium: 20px;
+  --mobile-h5-bold: 16px;
+  --mobile-h5-medium: 16px;
+  --mobile-h5-light: 16px;
+  --mobile-h6: 12px;
+  --mobile-p: 12px;
+  --mobile-p-bold: 12px;
+  --mobile-p-light: 12px;
+  --mobile-text: 14px;
+  --mobile-text: 14px;
+  --mobile-label-medium: 11px;
+  --mobile-label-light: 11px;
+  --mobile-text-light: 14px;
+
   // color
   --primary: "red";
   --secondary: "ivory";

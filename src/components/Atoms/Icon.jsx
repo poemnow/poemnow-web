@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const IconStyled = styled.div`
-  width: 24px;
-  height: 24px;
+  width: ${(props) => props.size};
+  height: ${(props) => props.size};
 `;
 
-export default function Icon({ children }) {
-  return <IconStyled>{children}</IconStyled>;
+export default function Icon({ children, size }) {
+  return <IconStyled size={size}>{children}</IconStyled>;
 }
