@@ -18,12 +18,16 @@ const TabContainer = styled.div`
  * matchWord={tag} , index={2}로 정하면 된다.
  */
 
-export default function Tab({ children, matchWord, index }) {
+export default function Tab({ children, matchWord, index, state, setState }) {
   const location = useLocation();
   const curUrl = location.pathname.split("/").at(index);
+
+  const onClick = () => {
+    setState(matchWord);
+  };
   return (
     <TabContainer isHere={curUrl === matchWord ? "1px solid black" : null}>
-      <H6>{children}</H6>
+      <H6 onClick={onClick}>{children}</H6>
     </TabContainer>
   );
 }
