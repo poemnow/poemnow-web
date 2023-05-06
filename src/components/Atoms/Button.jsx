@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 const ButtonStyle = styled.button`
-  width: 32px;
-  height: 32px;
+  width: 100%;
+  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.color};
+  border: ${(props) => props.border};
+  border-radius: ${(props) => props.radius};
 `;
 
 export default function Button(props) {
