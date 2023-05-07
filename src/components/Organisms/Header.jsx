@@ -3,27 +3,45 @@ import Icon from "../Atoms/Icon";
 
 const HeaderContainer = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
+  height: 48px;
 `;
 
 const HeaderFlexBox = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
 
 const HeaderFirst = styled.div`
   display: flex;
+  flex: 1;
+  justify-content: start;
+  align-items: center;
 `;
 
-const HeaderSecond = styled.div``;
+const HeaderCenter = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
 
-function Header({ isBack, isX, isHome, isEllipsis }) {
+const HeaderSecond = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+`;
+
+function Header({ isBack, isX, isHome, isEllipsis, title }) {
   return (
     <HeaderContainer>
       {isX ? (
         <HeaderFlexBox>
           <HeaderFirst>
-            <Icon>
+            <Icon outSize="24px" inSize="12px">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 384 512"
@@ -34,8 +52,9 @@ function Header({ isBack, isX, isHome, isEllipsis }) {
               </svg>
             </Icon>
           </HeaderFirst>
+          <HeaderCenter>{title}</HeaderCenter>
           <HeaderSecond>
-            <Icon>
+            <Icon outSize="24px" inSize="12px">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"
@@ -51,7 +70,7 @@ function Header({ isBack, isX, isHome, isEllipsis }) {
         <HeaderFlexBox>
           <HeaderFirst>
             {isBack && (
-              <Icon>
+              <Icon outSize="24px" inSize="12px">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 320 512"
@@ -63,7 +82,7 @@ function Header({ isBack, isX, isHome, isEllipsis }) {
               </Icon>
             )}
             {isHome && (
-              <Icon>
+              <Icon outSize="24px" inSize="12px">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 576 512"
@@ -75,9 +94,10 @@ function Header({ isBack, isX, isHome, isEllipsis }) {
               </Icon>
             )}
           </HeaderFirst>
+          <HeaderCenter>{title}</HeaderCenter>
           <HeaderSecond>
             {isEllipsis && (
-              <Icon>
+              <Icon outSize="24px" inSize="12px">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 128 512"

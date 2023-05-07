@@ -7,7 +7,10 @@ const TabContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 128px;
-  border-bottom: ${(props) => props.isHere};
+  flex: 1;
+  padding: 16px 0;
+  border-bottom: ${(props) =>
+    props.isHere ? "2px solid var(--primary)" : "2px solid var(--gray-200)"};
 `;
 
 /*
@@ -18,12 +21,17 @@ const TabContainer = styled.div`
  * matchWord={tag} , index={2}로 정하면 된다.
  */
 
-export default function Tab({ children, matchWord, index }) {
+export default function Tab({ children, matchWord, index, state, setState }) {
   const location = useLocation();
   const curUrl = location.pathname.split("/").at(index);
+
+  const onClick = () => {
+    setState(matchWord);
+  };
+
   return (
-    <TabContainer isHere={curUrl === matchWord ? "1px solid black" : null}>
-      <H6>{children}</H6>
+    <TabContainer isHere={curUrl === matchWord}>
+      <H6 onClick={onClick}>{children}</H6>
     </TabContainer>
   );
 }

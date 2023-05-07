@@ -7,12 +7,13 @@ const PoemCardListContainer = styled.div`
   grid-gap: 20px;
 `;
 
-const PoemCardList = ({ poems }) => {
+const PoemCardList = ({ poemList }) => {
   return (
     <PoemCardListContainer>
-      {poems.map((poem) => (
-        <PoemCard key={poem.id} poem={poem} user={poem.user} />
-      ))}
+      {poemList &&
+        poemList.map((poem) => (
+          <PoemCard key={poem.id} poem={poem} user={poem.user} />
+        ))}
     </PoemCardListContainer>
   );
 };

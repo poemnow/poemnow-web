@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
 const DateStyled = styled.div`
-  width: 200px;
-  height: 50px;
+  width: 100%;
+  font-size: 11px;
+  color: var(--gray-400);
   display: flex;
-  justify-content: center;
-  font-size: 16px;
-  color: black;
-  border-radius: 10px;
+  align-items: center;
 `;
 
 function Date({ children }) {
