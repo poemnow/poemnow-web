@@ -1,37 +1,44 @@
 import styled from "styled-components";
-
+import { useEffect, useState } from "react";
 const StyledSearchCondition = styled.div`
-  width: 100px;
-  height: 32px;
+  float: right;
 `;
 
-const StyledButton = styled.button`
+const StyledSpan = styled.span`
+  margin-right: 20px;
+  font-size: var(--mobile-label-medium);
   width: 100px;
   height: 32px;
+  cursor: pointer;
 `;
 
 // const = [currentSort, SetCurrtentSort] = useState("latest");
 // onChangeSort() 두 가지를 만들어서 인자로 넣어 쓸 수 있습니다.
 export default function SearchCondition({ currentSort, onChangeSort }) {
-  const handleSortClick = (sortType) => {
+  const [isClicked, setIsClicked] = useState(true);
+
+  const handleSortClick = (sortType, boolean) => {
     if (sortType !== currentSort) {
       onChangeSort(sortType);
     }
+    setIsClicked(boolean);
   };
   return (
     <StyledSearchCondition>
-      <StyledButton
+      <StyledSpan
         isSelected={currentSort === "latest"}
-        onClick={() => handleSortClick("latest")}
+        onClick={() => handleSortClick("latest", true)}
+        style={{ color: isClicked ? "green" : "gray" }}
       >
         최신순
-      </StyledButton>
-      <StyledButton
+      </StyledSpan>
+      <StyledSpan
         isSelected={currentSort === "popular"}
-        onClick={() => handleSortClick("popular")}
+        onClick={() => handleSortClick("popular", false)}
+        style={{ color: isClicked ? "gray" : "green" }}
       >
         인기순
-      </StyledButton>
+      </StyledSpan>
     </StyledSearchCondition>
   );
 }

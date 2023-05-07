@@ -11,9 +11,22 @@ const InputStyle = styled.input`
   }
 `;
 
-function Input(props) {
+function Input({ props }) {
   return (
-    <InputStyle type={props.type} placeholder={props.placeholder}></InputStyle>
+    <InputStyle
+      type={props.type}
+      placeholder={props.placeholder}
+      minlength={props.minlength}
+      maxlength={props.maxlength}
+      id={props.id}
+      name={props.name}
+      className={props.className}
+      autoComplete={props.autoComplete}
+      onKeyDown={props.onKeyDown}
+      value={props.value}
+      onChange={props.onChange}
+      checked={props.checked}
+    ></InputStyle>
   );
 }
 
