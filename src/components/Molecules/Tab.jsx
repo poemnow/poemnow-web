@@ -7,7 +7,10 @@ const TabContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 128px;
-  border-bottom: ${(props) => props.isHere};
+  flex: 1;
+  padding: 16px 0;
+  border-bottom: ${(props) =>
+    props.isHere ? "2px solid var(--primary)" : "2px solid var(--gray-200)"};
 `;
 
 /*
@@ -25,8 +28,9 @@ export default function Tab({ children, matchWord, index, state, setState }) {
   const onClick = () => {
     setState(matchWord);
   };
+
   return (
-    <TabContainer isHere={curUrl === matchWord ? "1px solid black" : null}>
+    <TabContainer isHere={curUrl === matchWord}>
       <H6 onClick={onClick}>{children}</H6>
     </TabContainer>
   );
