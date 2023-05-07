@@ -1,5 +1,5 @@
 import React from "react";
-import CommentCard from "../molecules/CommentCard";
+import CommentCard from "../Molecules/CommentCard";
 
 const CommentCardList = ({ comments }) => {
   return (
