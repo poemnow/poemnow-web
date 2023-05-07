@@ -3,6 +3,7 @@ import styled from "styled-components";
 const H2Styled = styled.h2`
   font-size: var(--mobile-h2);
   color: ${(props) => props.color};
+  word-break: break-all;
 `;
 
 export default function H2({ children, color }) {

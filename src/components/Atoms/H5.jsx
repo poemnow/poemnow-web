@@ -3,6 +3,7 @@ import styled from "styled-components";
 const H5Styled = styled.h5`
   font-size: var(--mobile-h5-medium);
   color: ${(props) => props.color};
+  word-break: break-all;
 `;
 
 export default function H5({ children, color }) {
