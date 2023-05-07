@@ -9,10 +9,11 @@ const TabBarContainer = styled.ul`
   height: 64px;
 `;
 
-export default function TabBar({ TabList }) {
+export default function TabBar({ children }) {
   return (
     <TabBarContainer>
-      {TabList &&
+      {children}
+      {/* {TabList &&
         TabList.map((tab, index) => {
           return (
             <li key={index}>
@@ -21,7 +22,7 @@ export default function TabBar({ TabList }) {
               </Tab>
             </li>
           );
-        })}
+        })} */}
     </TabBarContainer>
   );
 }
