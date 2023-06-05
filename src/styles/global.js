@@ -5,7 +5,6 @@ import "../fonts/pretendard-subset.css";
 const GlobalVariableStyle = createGlobalStyle`
 :root {
   // font size
-   // font size
   --mobile-h1: 42px; 
   --mobile-h2: 36px; 
   --mobile-h3: 24px;
