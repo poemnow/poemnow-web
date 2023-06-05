@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Icon from "../Atoms/Icon";
+import H5 from "../Atoms/H5";
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -52,7 +53,9 @@ function Header({ isBack, isX, isHome, isEllipsis, title }) {
               </svg>
             </Icon>
           </HeaderFirst>
-          <HeaderCenter>{title}</HeaderCenter>
+          <HeaderCenter>
+            <H5 weight={"light"}>{title}</H5>
+          </HeaderCenter>
           <HeaderSecond>
             <Icon outSize="24px" inSize="12px">
               <svg
@@ -94,7 +97,9 @@ function Header({ isBack, isX, isHome, isEllipsis, title }) {
               </Icon>
             )}
           </HeaderFirst>
-          <HeaderCenter>{title}</HeaderCenter>
+          <HeaderCenter>
+            <H5 weight={"light"}>{title}</H5>
+          </HeaderCenter>
           <HeaderSecond>
             {isEllipsis && (
               <Icon outSize="24px" inSize="12px">

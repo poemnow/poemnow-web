@@ -3,17 +3,30 @@ import styled from "styled-components";
 
 const InputStyle = styled.input`
   width: 100%;
-  border-radius: 16px;
-  background-color: #f3f4f6;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid var(--gray-300);
+  box-sizing: border-box;
   ::placeholder {
     color: ${(props) => props.placeholderColor};
     font-size: 14px;
   }
+  &:focus {
+    border: 1px solid var(--primary2);
+    outline: 1px solid var(--primary2);
+  }
+  padding: 12px 24px;
 `;
 
 function Input(props) {
   return (
-    <InputStyle type={props.type} placeholder={props.placeholder}></InputStyle>
+    <InputStyle
+      {...props.register}
+      id={props.id}
+      type={props.type}
+      placeholder={props.placeholder}
+      placeholderColor={props.placeholderColor}
+    ></InputStyle>
   );
 }
 

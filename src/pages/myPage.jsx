@@ -7,8 +7,21 @@ import H3 from "../components/Atoms/H3";
 import TabBar from "../components/Organisms/TabBar";
 import PoemCardList from "../components/Organisms/PoemCardList";
 import BookCardList from "../components/Organisms/BookCardList";
+import styled from "styled-components";
+import Header from "../components/Organisms/Header";
+import MyPageMain from "../components/Templates/MyPageMain";
+
+const MyPageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+`;
 
 function MyPage() {
+  const location = useLocation();
+  const curUrl = location.pathname.split("/");
+
   const [user, setUser] = useState(null);
   const [followerCount, setFollowerCount] = useState(0);
   const [followingCount, setFollowingCount] = useState(0);
@@ -54,58 +67,26 @@ function MyPage() {
       .then((data) => setPoemList(data));
   }, []);
 
+  const dummyUser = {
+    name: "박지우",
+    url: "http://example.com",
+    followerCnt: 10,
+    followingCnt: 12,
+  };
   return (
-    <div>
-      {/* 최상단 부분 -> 모달 버튼과 찜하기 버튼이 들어갑니다. */}
-      <div>
-        <Link to="/like">
-          <Button>찜 목록</Button>
-        </Link>
-      </div>
-      {/* 중간 부분 -> 프로필 이미지, 닉네임, 자기소개*/}
-      <div>
-        <div>
-          {/* 프로필 이미지 */}
-          {user && <ProfileImage src={user.profileImage} alt="프로필 이미지" />}
-        </div>
-        {/* 닉네임과 자기소개 */}
-        <div>
-          <H3>작가명 :{user && user.nickname}</H3>
-          <P>자기소개 : {user && user.bio}</P>
-          <P>SNS : {user && user.social_url} </P>
-        </div>
-      </div>
-      {/* 바로 아래 -> 구독자 수, 관심작가 수, 책쓰기 버튼  */}
-      <div>
-        <div>
-          <Link to="/follower">
-            <Button>구독자 수 : {followerCount}</Button>
-          </Link>
-          <Link to="/following">
-            <Button>관심작가 수 : {followingCount}</Button>
-          </Link>
-        </div>
-        <div>
-          <Link to="/write/poem">
-            <Button>시 쓰기</Button>
-          </Link>
-        </div>
-      </div>
-      <div>
+    <MyPageContainer>
+      <Header isX={false} isBack={true} isHome={true} isEllipsis={true} />
+      <MyPageMain user={dummyUser} />
+      {/* <div>
         <TabBar
           TabList={["시", "시집"]}
           state={selected}
           setState={setSelected}
         />
       </div>
-      {/* 아랫부분은 시, 혹은 시집이 나온다.
-      현재 URL에 따라 다른 결과를 출력한다. */}
       {selected === "poem" && <PoemCardList poemList={poemList} />}
-      {selected === "book" && <BookCardList bookList={bookList} />}
-
-      {/* 시 / 시집 선택 화면 */}
-      {/* 시 / 시집 리스트 */}
-    </div>
+      {selected === "book" && <BookCardList bookList={bookList} />} */}
+    </MyPageContainer>
   );
 }
 

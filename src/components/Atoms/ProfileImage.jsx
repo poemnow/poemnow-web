@@ -1,22 +1,13 @@
 import styled from "styled-components";
 
-const ProfileImageContainer = styled.div`
+const ProfileImageStyle = styled.img`
   width: ${(props) => props.size};
   height: ${(props) => props.size};
-  border-radius: 70%;
-  overflow: hidden;
-`;
-const ProfileImageStyle = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  border-radius: 50%;
 `;
 
 export default function ProfileImage({ src, alt, size }) {
-  console.log(size);
   return (
-    <ProfileImageContainer size={size}>
-      <ProfileImageStyle src={src} alt={alt}></ProfileImageStyle>
-    </ProfileImageContainer>
+    <ProfileImageStyle size={size} src={src} alt={alt}></ProfileImageStyle>
   );
 }
