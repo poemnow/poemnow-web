@@ -17,7 +17,7 @@ const GlobalVariableStyle = createGlobalStyle`
 
   // color
   --primary: #1F6313;
-  --primary2: #C1E5C5;
+  --primary2: #359F40;
   --secondary: #EEE9CD;
   --background: #FFFFFF;
   --red: red;
@@ -64,6 +64,9 @@ const GlobalVariableStyle = createGlobalStyle`
 }
 #root {
   font-family: "Pretendard";
+}
+* {
+  word-break: break-all;
 }
 `;
 

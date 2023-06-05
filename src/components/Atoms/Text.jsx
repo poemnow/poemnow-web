@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const TextStyled = styled.input`
+const TextStyled = styled.text`
   font-size: var(--mobile-text);
   color: ${(props) => props.color};
   font-weight: ${(props) => (props.weight === "light" ? 300 : 500)};
