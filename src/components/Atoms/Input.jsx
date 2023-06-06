@@ -26,6 +26,14 @@ function Input(props) {
       type={props.type}
       placeholder={props.placeholder}
       placeholderColor={props.placeholderColor}
+      minlength={props.minlength}
+      maxlength={props.maxlength}
+      name={props.name}
+      className={props.className}
+      autoComplete={props.autoComplete}
+      onKeyDown={props.onKeyDown}
+      value={props.value}
+      onChange={props.onChange}
     ></InputStyle>
   );
 }

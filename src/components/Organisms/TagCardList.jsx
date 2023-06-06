@@ -2,6 +2,8 @@ import styled from "styled-components";
 import H6 from "../Sangho/H6";
 import TagCard from "../hyeon/Tagcard";
 import api from "../../utils/api";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const ATag = styled.a`
   color: black;
@@ -20,20 +22,21 @@ export default function TagCardList({ text }) {
   useEffect(() => {
     api("search/tag?keyword=" + text, "GET").then((res) => setData(res));
   }, []);
-
-  {
-    data
-      ? Array.isArray(data)
-        ? data.map((e, i) => {
-            return (
-              <div key={i}>
-                <span key={`${i}${e}`}>
-                  {<TagCard text={e.name} count={e.cnt} />}
-                </span>
-              </div>
-            );
-          })
-        : null
-      : null;
-  }
+  return (
+    <>
+      {data
+        ? Array.isArray(data)
+          ? data.map((e, i) => {
+              return (
+                <div key={i}>
+                  <span key={`${i}${e}`}>
+                    {<TagCard text={e.name} count={e.cnt} />}
+                  </span>
+                </div>
+              );
+            })
+          : null
+        : null}
+    </>
+  );
 }
