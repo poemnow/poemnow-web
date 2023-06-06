@@ -67,6 +67,7 @@ function Register() {
             type="text"
             placeholder="사용하실 아이디를 입력하세요"
             placeholderColor={"var(--gray-400)"}
+            border={"1px solid var(--gray-300)"}
             register={register("id", {
               required: "아이디는 필수 입력 사항입니다",
               minLength: {
@@ -90,6 +91,7 @@ function Register() {
             type="password"
             placeholder="사용하실 비밀번호를 입력하세요"
             placeholderColor={"var(--gray-400)"}
+            border={"1px solid var(--gray-300)"}
             register={register("password", {
               required: "비밀번호는 필수 입력 사항입니다",
               minLength: {
@@ -113,6 +115,7 @@ function Register() {
             type="password"
             placeholder="비밀번호를 다시 입력해주세요"
             placeholderColor={"var(--gray-400)"}
+            border={"1px solid var(--gray-300)"}
             register={register("passwordValidate", {
               required: "비밀번호는 필수 입력 사항입니다",
               minLength: {
@@ -144,6 +147,7 @@ function Register() {
               type="email"
               placeholder="이메일을 입력하세요"
               placeholderColor={"var(--gray-400)"}
+              border={"1px solid var(--gray-300)"}
               register={register("email", {
                 required: "이메일은 필수 입력 사항입니다",
                 pattern: {
@@ -164,6 +168,7 @@ function Register() {
             type="text"
             placeholder="인증번호 6자리 숫자를 입력해주세요"
             placeholderColor={"var(--gray-400)"}
+            border={"1px solid var(--gray-300)"}
             register={register("authNumber", {
               required: "인증번호를 입력해주세요",
             })}
@@ -179,6 +184,7 @@ function Register() {
             type="text"
             placeholder="실명을 입력해주세요"
             placeholderColor={"var(--gray-400)"}
+            border={"1px solid var(--gray-300)"}
             register={register("name", {
               required: "이름은 필수 입력 사항입니다",
               minLength: {
@@ -202,6 +208,7 @@ function Register() {
             type="text"
             placeholder="사용하실 작가 이름을 입력해주세요"
             placeholderColor={"var(--gray-400)"}
+            border={"1px solid var(--gray-300)"}
             register={register("nickname", {
               required: "닉네임은 필수 입력 사항입니다",
               minLength: {
@@ -221,7 +228,12 @@ function Register() {
             <H5>생년월일</H5>
             <H5 weight={"light"}>(선택)</H5>
           </Label>
-          <Input id="birthday" type="date" register={register("birthday")} />
+          <Input
+            id="birthday"
+            type="date"
+            register={register("birthday")}
+            border={"1px solid var(--gray-300)"}
+          />
           <Error>{errors?.birthday?.message}</Error>
         </InputSet>
         <InputSet>
@@ -233,6 +245,9 @@ function Register() {
             id="phoneNumber"
             type="text"
             register={register("phoneNumber")}
+            border={"1px solid var(--gray-300)"}
+            placeholder={"010-0000-0000 형식으로 입력해주세요"}
+            placeholderColor={"var(--gray-400)"}
           />
           <Error>{errors?.phoneNumber?.message}</Error>
         </InputSet>

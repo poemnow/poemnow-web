@@ -5,7 +5,7 @@ const InputStyle = styled.input`
   width: 100%;
   box-sizing: border-box;
   outline: none;
-  border: 1px solid var(--gray-300);
+  border: ${(props) => props.border};
   box-sizing: border-box;
   ::placeholder {
     color: ${(props) => props.placeholderColor};
@@ -16,6 +16,8 @@ const InputStyle = styled.input`
     outline: 1px solid var(--primary2);
   }
   padding: 12px 24px;
+  border-radius: ${(props) => props.borderRadius};
+  background-color: ${(props) => props.backgroundColor};
 `;
 
 function Input(props) {
@@ -34,6 +36,9 @@ function Input(props) {
       onKeyDown={props.onKeyDown}
       value={props.value}
       onChange={props.onChange}
+      border={props.border}
+      borderRadius={props.borderRadius}
+      backgroundColor={props.backgroundColor}
     ></InputStyle>
   );
 }

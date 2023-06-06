@@ -34,6 +34,10 @@ const GlobalVariableStyle = createGlobalStyle`
   --gray-900: #111827;
   --gray-1000: #030712;
 
+  --naverContainer: #2DB400;
+  --kakaoContainer: #FEE500;
+  --kakaoLabel: #191919;
+
   // margin
   --margin-4: 4px;
   --margin-8: 8px;
