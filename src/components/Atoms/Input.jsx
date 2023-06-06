@@ -18,7 +18,7 @@ const InputStyle = styled.input`
   padding: 12px 24px;
 `;
 
-function Input({ props }) {
+function Input(props) {
   return (
     <InputStyle
       {...props.register}
