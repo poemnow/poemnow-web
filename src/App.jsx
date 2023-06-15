@@ -15,6 +15,7 @@ import CommentCardList from "./components/Organisms/CommentCardList";
 import LikeTop from "./components/Templates/LikeTop";
 import FollowComponent from "./pages/followComponent";
 import LikeTab from "./components/Templates/LikeTab";
+import WritePoem from "./pages/WritePoem";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/withdraw1" element={<Withdraw />} />
           <Route path="/withdraw2" element={<Withdraw />} />
+          <Route path="/writePoem" element={<WritePoem/>}/>
           {/* <Route path="/updateProfile" element={<UpdateProfile />} /> */}
           {/* search 페이지를 위한 라우팅 */}
           {/* <Route path="/search" element={<Search />}>
@@ -39,8 +41,8 @@ function App() {
               <Route path="detail" element={<Detail />}></Route>
             </Route> */}
           {/* <Route path="/poem"></Route>
-						<Route path="/write"></Route>
-						<Route path="/book"></Route> */}
+                  <Route path="/write"></Route>
+                  <Route path="/book"></Route> */}
           {/* </Route> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
