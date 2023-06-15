@@ -11,8 +11,13 @@ const PoemCardList = ({ poemList }) => {
   return (
     <PoemCardListContainer>
       {poemList &&
-        poemList.map((poem) => (
-          <PoemCard key={poem.id} poem={poem} user={poem.user} />
+        poemList.map((content) => (
+          <PoemCard
+            key={content.poem.id}
+            poem={content}
+            user={content.writer}
+            commentCnt={content.commentCnt}
+          />
         ))}
     </PoemCardListContainer>
   );
