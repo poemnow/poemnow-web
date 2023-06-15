@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 const SocialUrlStyle = styled.a`
-  color: #5470ff;
+  color: ${(props) => (props.color ? props.color : "#5470ff")};
   width: 100%;
   font-size: 12px;
   text-decoration: none;
 `;
 
-export default function SocialURL({ url }) {
-  return <SocialUrlStyle href={`${url}`}>{url}</SocialUrlStyle>;
+export default function SocialURL({ url, color }) {
+  return (
+    <SocialUrlStyle href={`${url}`} color={color}>
+      {url}
+    </SocialUrlStyle>
+  );
 }

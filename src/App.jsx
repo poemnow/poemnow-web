@@ -12,9 +12,9 @@ import Detail from "./components/etc/Detail";
 import PoemCardList from "./components/Organisms/PoemCardList";
 import BookCardList from "./components/Organisms/BookCardList";
 import CommentCardList from "./components/Organisms/CommentCardList";
-import "./styles/mvp.css";
 import LikeTop from "./components/Templates/LikeTop";
 import FollowComponent from "./pages/followComponent";
+import LikeTab from "./components/Templates/LikeTab";
 
 function App() {
   return (
@@ -26,13 +26,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/myPage" element={<MyPage />}>
-            <Route path="*" element={<NotFound />} />
-          </Route>
-          <Route path="/myPage/like" element={<LikeTop />}>
-            <Route path="poem" element={<PoemCardList />} />
-            <Route path="book" element={<BookCardList />} />
-            <Route path="comment" element={<CommentCardList />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="like" element={<LikeTab />} />
           </Route>
           <Route path="/poem" element={<Poem />} />
           <Route path="/register" element={<Register />} />

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const H1Styled = styled.h1`
   font-size: var(--mobile-h1);
+  font-weight: 700;
   color: ${(props) => props.color};
 `;
 

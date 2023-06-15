@@ -5,13 +5,14 @@ import Footer from "./Footer";
 const LayoutContainer = styled.div`
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 `;
 
 const LayoutBody = styled.div`
   min-height: 100vh;
-  width: 100%;
 
-  padding: 0px 128px;
+  padding: 0px 16px;
   padding-top: 128px;
 `;
 

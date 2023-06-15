@@ -6,6 +6,6 @@ const ErrorStyle = styled.div`
   font-size: 12px;
 `;
 
-export default function ErrorComponent({ message }) {
-  return message ? <ErrorStyle>{message}</ErrorStyle> : null;
+export default function Error({ children }) {
+  return <ErrorStyle>{children}</ErrorStyle>;
 }
