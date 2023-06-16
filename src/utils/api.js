@@ -1,8 +1,11 @@
-async function api(url, method) {
+async function api(url, method, requestBody) {
   try {
     const response = await fetch(`http://localhost:8080/${url}`, {
       method: method,
-      "Content-Type": "application/json",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
     });
     const data = await response.json();
     return data;

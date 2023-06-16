@@ -6,6 +6,7 @@ import FollowCnt from "./followCnt";
 import styled from "styled-components";
 import ProfileImage from "../Atoms/ProfileImage";
 import ModalMiddle from "../Molecules/ModalMiddle";
+import Icon from "../Atoms/Icon";
 
 const FollowLCnt = styled.div`
   text-align: center;
@@ -68,12 +69,17 @@ const ButtonFollower = styled.span`
   align-items: center;
   justify-content: center;
   color: white;
-  background-color: var(--primary2);
+  background-color: var(--primary);
   width: 50px;
   height: 28px;
   border-radius: 10px;
   font-size: var(--mobile-label-medium);
   border: none;
+`;
+const IconContainer = styled.span`
+  position: absolute;
+  left: 10px;
+  top: 3px;
 `;
 function FollowListYou(props) {
   const params = useParams();
@@ -89,7 +95,7 @@ function FollowListYou(props) {
   const [sameData, setSameData] = useState();
   const [difData, setDifData] = useState();
   useEffect(() => {
-    api("follow/followList/" + params.id, "GET").then((res) => setData(res));
+    api("follow/follow/" + params.id, "GET").then((res) => setData(res));
   }, []);
   useEffect(() => {
     const followList = JSON.stringify(data);
@@ -101,21 +107,21 @@ function FollowListYou(props) {
   }, [data]);
   function insertdeleteFollow(id, flag, i) {
     if (flag == false) {
-      api("follow/followRemove?followId=" + id, "DELETE");
+      api("follow?followId=" + id, "DELETE");
       setButtonText(i);
       setShowPopup(-1);
     } else {
-      api("follow/followAdd?followId=" + id, "POST");
+      api("follow?followId=" + id, "POST");
       setButtonText(-1);
     }
   }
   function insertdeleteFollow2(id, flag, i) {
     if (flag == false) {
-      api("follow/followRemove?followId=" + id, "DELETE");
+      api("follow?followId=" + id, "DELETE");
       setButtonText(-1);
       setShowPopup(-1);
     } else {
-      api("follow/followAdd?followId=" + id, "POST");
+      api("follow?followId=" + id, "POST");
       setButtonText(i);
     }
   }
@@ -124,7 +130,21 @@ function FollowListYou(props) {
   let a = 0;
   return (
     <>
-      <FollowLCnt>팔로잉 {<FollowCnt id={params.id} />}명</FollowLCnt>
+      <FollowLCnt>
+        <IconContainer>
+          <Icon outSize="24px" inSize="12px">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 320 512"
+              width="100%"
+              height="100%"
+            >
+              <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+            </svg>
+          </Icon>
+        </IconContainer>
+        팔로잉 {<FollowCnt id={params.id} />}명
+      </FollowLCnt>
       <FollowListContainer>
         {sameData
           ? Array.isArray(sameData)
@@ -135,7 +155,7 @@ function FollowListYou(props) {
                     <ProfileImage
                       key={`${i}${data}`}
                       src={data.profile_pic}
-                      size={"80px"}
+                      size={"60px"}
                     ></ProfileImage>
                     <FollowName>
                       <FollowUserName key={`${i}${data}2`}>
@@ -179,7 +199,7 @@ function FollowListYou(props) {
                     <ProfileImage
                       key={`${i}${data}`}
                       src={data.profile_pic}
-                      size={"80px"}
+                      size={"60px"}
                     ></ProfileImage>
                     <FollowName>
                       <FollowUserName key={`${i}${data}2`}>

@@ -5,33 +5,37 @@ import Register from "./pages/register";
 import MyPage from "./pages/myPage";
 import Poem from "./pages/poem";
 import NotFound from "./pages/404";
-import Search from "./pages/Search";
 import TagSearchList from "./components/etc/TagSearchList";
 import Detail from "./components/etc/Detail";
 import PoemCardList from "./components/Organisms/PoemCardList";
 import BookCardList from "./components/Organisms/BookCardList";
 import CommentCardList from "./components/Organisms/CommentCardList";
-import "./styles/mvp.css";
 import LikeTop from "./components/Templates/LikeTop";
-import FollowComponent from "./pages/followComponent";
+import FollowPage from "./pages/followPage";
+import SearchPage from "./pages/SearchPage";
+import PoemDetail from "./pages/poemDetail";
+import FollowerPage from "./pages/followerPage";
 
 function App() {
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/followList" element={<FollowComponent />} />
-          <Route path="/followList/:id" element={<FollowComponent />} />
+          <Route path="/followList" element={<FollowPage />} />
+          <Route path="/followList/:id" element={<FollowPage />} />
+          <Route path="/followerList" element={<FollowerPage />} />
+          <Route path="/followerList/:id" element={<FollowerPage />} />
+          <Route path="/poemDetail/:id" element={<PoemDetail />} />
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/myPage" element={<MyPage />}>
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/search" element={<SearchPage />}>
-            <Route path="poem" element={<PoemSearchList />} />
+            {/* <Route path="poem" element={<PoemSearchList />} />
             <Route path="book" element={<BookSearchList />} />
             <Route path="writer" element={<WriterSearchList />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} /> */}
           </Route>
           <Route path="/myPage/like" element={<LikeTop />}>
             <Route path="poem" element={<PoemCardList />} />

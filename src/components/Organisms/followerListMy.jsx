@@ -4,11 +4,12 @@ import api from "../../utils/api";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ProfileImage from "../Atoms/ProfileImage";
-import FollowCnt from "./followCnt";
-import ModalMiddle from "../Molecules/ModalMiddle";
+import FollowerCnt from "./followerCnt";
+import ModalMiddle2 from "../Molecules/ModalMiddle2";
 import Icon from "../Atoms/Icon";
 
-const FollowLCnt = styled.div`
+const FollowerLCnt = styled.div`
+  align-items: center;
   text-align: center;
   padding-top: 8px;
   font-size: var(--mobile-h5-medium);
@@ -81,14 +82,15 @@ const IconContainer = styled.span`
   left: 10px;
   top: 3px;
 `;
-function FollowListMy(props) {
+
+function FollowerListMy(props) {
   const [showPopup, setShowPopup] = useState(-1);
 
   const [buttonText, setButtonText] = useState(-1);
 
   const [data, setData] = useState();
   useEffect(() => {
-    api("follow/follow", "GET").then((res) => setData(res));
+    api("follow/follower", "GET").then((res) => setData(res));
   }, []);
 
   useEffect(() => {
@@ -98,21 +100,20 @@ function FollowListMy(props) {
     }
   }, [data]);
 
-  function insertdeleteFollow(id, flag, i) {
-    if (flag == false) {
-      api("follow?followId=" + id, "DELETE");
-      setButtonText(i);
-      setShowPopup(-1);
-    } else {
-      api("follow?followId=" + id, "POST");
-      setButtonText(-1);
-    }
+  function insertdeleteFollow(id, i) {
+    api("follow/follower?followId=" + id, "DELETE").then(() => {
+      api("follow/follower", "GET").then((res) => setData(res));
+    });
+
+    setButtonText(i);
+    setShowPopup(-1);
   }
+
   //버튼 텍스트 배열로 바꾸고 i 값들을 저장해 두고 버튼 텍스트들이 i값들인 것들은 전부
   //팔로우로 보이게 해야 한다. 나중에 고쳐
   return (
     <>
-      <FollowLCnt>
+      <FollowerLCnt>
         <IconContainer>
           <Icon outSize="24px" inSize="12px">
             <svg
@@ -125,8 +126,8 @@ function FollowListMy(props) {
             </svg>
           </Icon>
         </IconContainer>
-        내가 구독하는 {<FollowCnt id={""} />}명
-      </FollowLCnt>
+        나를 구독하는 {<FollowerCnt id={""} />}명
+      </FollowerLCnt>
       <FollowListContainer>
         {data
           ? Array.isArray(data)
@@ -145,27 +146,19 @@ function FollowListMy(props) {
                       <FollowBio key={`${i}${data}3`}>{data.bio}</FollowBio>
                     </FollowName>
 
-                    {buttonText == i ? (
-                      <ButtonFollower
-                        onClick={() => insertdeleteFollow(data.id, true, i)}
-                      >
-                        팔로우
-                      </ButtonFollower>
-                    ) : (
-                      <ButtonFollowing onClick={() => setShowPopup(i)}>
-                        팔로잉
-                      </ButtonFollowing>
-                    )}
+                    <ButtonFollowing onClick={() => setShowPopup(i)}>
+                      삭제
+                    </ButtonFollowing>
 
                     {showPopup == i ? (
-                      <ModalMiddle
+                      <ModalMiddle2
                         nickname={data.user_nickname}
                         src={data.profile_pic}
                         toggleModal={() => setShowPopup(-1)}
                         insertdeleteFollow={() =>
-                          insertdeleteFollow(data.id, false, i)
+                          insertdeleteFollow(data.id, i)
                         }
-                      ></ModalMiddle>
+                      ></ModalMiddle2>
                     ) : // <div>
                     //   <div>
                     //     <span>{data.profile_pic}</span>
@@ -193,4 +186,4 @@ function FollowListMy(props) {
   );
 }
 
-export default FollowListMy;
+export default FollowerListMy;

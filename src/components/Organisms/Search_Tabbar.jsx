@@ -5,7 +5,7 @@ import styled from "styled-components";
 const TabBarContainer = styled.div``;
 
 function Mypage_like_Tabbar() {
-  const tabList = ["시", "시집", "댓글"];
+  const tabList = ["시", "시집", "작가"];
 
   return (
     <TabBarContainer>
