@@ -5,6 +5,7 @@ const ProfileImageContainer = styled.div`
   height: ${(props) => props.size};
   border-radius: 70%;
   overflow: hidden;
+  // display: inline-block;
 `;
 const ProfileImageStyle = styled.img`
   width: 100%;

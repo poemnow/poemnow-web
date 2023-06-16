@@ -27,6 +27,12 @@ function App() {
           <Route path="/myPage" element={<MyPage />}>
             <Route path="*" element={<NotFound />} />
           </Route>
+          <Route path="/search" element={<SearchPage />}>
+            <Route path="poem" element={<PoemSearchList />} />
+            <Route path="book" element={<BookSearchList />} />
+            <Route path="writer" element={<WriterSearchList />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
           <Route path="/myPage/like" element={<LikeTop />}>
             <Route path="poem" element={<PoemCardList />} />
             <Route path="book" element={<BookCardList />} />

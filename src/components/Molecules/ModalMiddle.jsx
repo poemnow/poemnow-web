@@ -63,7 +63,7 @@ const Border = styled.div`
  */
 
 export default function ModalMiddle(props) {
-  const { toggleModal, insertdeleteFollow } = props;
+  const { toggleModal, insertdeleteFollow, insertdeleteFollow2 } = props;
 
   let scrollPosition = 0;
 
