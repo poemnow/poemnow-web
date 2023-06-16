@@ -5,10 +5,11 @@ import Button from "../components/Atoms/Button";
 import FitContentButton from "../components/Atoms/FitContentButton";
 import Error from "../components/Atoms/Error";
 import Label from "../components/Atoms/Label";
-import { getValue } from "@testing-library/user-event/dist/utils";
 import H5 from "../components/Atoms/H5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Organisms/Header";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useSignUp } from "../hooks/useSignUp";
 
 const RegisterContainer = styled.div`
   padding: 0px 16px;
@@ -44,14 +45,24 @@ const Center = styled.div`
 `;
 
 function Register() {
+  // react-hook-form에서 사용되는 함수
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+  // 회원가입시 사용되는 hooks
+  const signUp = useSignUp();
+
+  const onSubmit = async (data) => {
+    signUp(data);
+  };
+
+  const getCertification = (event) => {
+    event.preventDefault();
+    alert("인증번호 받기");
   };
 
   return (
@@ -59,16 +70,16 @@ function Register() {
       <Header isBack={true} title={"회원가입"} />
       <FormStyled onSubmit={handleSubmit(onSubmit)}>
         <InputSet>
-          <Label htmlFor="id">
+          <Label htmlFor="userId">
             <H5>아이디</H5>
           </Label>
           <Input
-            id="id"
+            id="userId"
             type="text"
             placeholder="사용하실 아이디를 입력하세요"
             placeholderColor={"var(--gray-400)"}
             border={"1px solid var(--gray-300)"}
-            register={register("id", {
+            register={register("userId", {
               required: "아이디는 필수 입력 사항입니다",
               minLength: {
                 value: 4,
@@ -80,7 +91,7 @@ function Register() {
               },
             })}
           />
-          <Error>{errors?.id?.message}</Error>
+          <Error>{errors?.userId?.message}</Error>
         </InputSet>
         <InputSet>
           <Label htmlFor="password">
@@ -128,7 +139,8 @@ function Register() {
               },
               validate: {
                 check: (val) => {
-                  if (getValue("password") !== val) {
+                  if (getValues("password") !== val) {
+                    console.log("password" + getValues("password"));
                     return "비밀번호가 일치하지 않습니다";
                   }
                 },
@@ -159,6 +171,8 @@ function Register() {
             <FitContentButton
               backgroundColor={"var(--primary2)"}
               color={"var(--gray-100)"}
+              type="button"
+              onClick={getCertification}
             >
               인증번호 발송
             </FitContentButton>
@@ -173,19 +187,19 @@ function Register() {
               required: "인증번호를 입력해주세요",
             })}
           />
-          <Error>{errors?.email?.message}</Error>
+          <Error>{errors?.authNumber?.message}</Error>
         </InputSet>
         <InputSet>
-          <Label htmlFor="nickname">
+          <Label htmlFor="userName">
             <H5>이름</H5>
           </Label>
           <Input
-            id="name"
+            id="userName"
             type="text"
             placeholder="실명을 입력해주세요"
             placeholderColor={"var(--gray-400)"}
             border={"1px solid var(--gray-300)"}
-            register={register("name", {
+            register={register("userName", {
               required: "이름은 필수 입력 사항입니다",
               minLength: {
                 value: 2,
@@ -197,19 +211,19 @@ function Register() {
               },
             })}
           />
-          <Error>{errors?.name?.message}</Error>
+          <Error>{errors?.userName?.message}</Error>
         </InputSet>
         <InputSet>
-          <Label htmlFor="nickname">
+          <Label htmlFor="userNickname">
             <H5>닉네임</H5>
           </Label>
           <Input
-            id="nickname"
+            id="userNickname"
             type="text"
             placeholder="사용하실 작가 이름을 입력해주세요"
             placeholderColor={"var(--gray-400)"}
             border={"1px solid var(--gray-300)"}
-            register={register("nickname", {
+            register={register("userNickname", {
               required: "닉네임은 필수 입력 사항입니다",
               minLength: {
                 value: 2,
@@ -221,35 +235,35 @@ function Register() {
               },
             })}
           />
-          <Error>{errors?.nickname?.message}</Error>
+          <Error>{errors?.userNickname?.message}</Error>
         </InputSet>
         <InputSet>
-          <Label htmlFor="birthday">
+          <Label htmlFor="userBirth">
             <H5>생년월일</H5>
             <H5 weight={"light"}>(선택)</H5>
           </Label>
           <Input
-            id="birthday"
+            id="userBirth"
             type="date"
-            register={register("birthday")}
+            register={register("userBirth")}
             border={"1px solid var(--gray-300)"}
           />
-          <Error>{errors?.birthday?.message}</Error>
+          <Error>{errors?.userBirth?.message}</Error>
         </InputSet>
         <InputSet>
-          <Label htmlFor="phoneNumber">
+          <Label htmlFor="userPhone">
             <H5>휴대전화</H5>
             <H5 weight={"light"}>(선택)</H5>
           </Label>
           <Input
-            id="phoneNumber"
+            id="userPhone"
             type="text"
-            register={register("phoneNumber")}
+            register={register("userPhone")}
             border={"1px solid var(--gray-300)"}
             placeholder={"010-0000-0000 형식으로 입력해주세요"}
             placeholderColor={"var(--gray-400)"}
           />
-          <Error>{errors?.phoneNumber?.message}</Error>
+          <Error>{errors?.userPhone?.message}</Error>
         </InputSet>
         <Button
           backgroundColor={"var(--primary2)"}
