@@ -23,7 +23,6 @@ const InputStyle = styled.input`
 function Input(props) {
   return (
     <InputStyle
-      {...props.register}
       id={props.id}
       type={props.type}
       placeholder={props.placeholder}
@@ -39,6 +38,7 @@ function Input(props) {
       border={props.border}
       borderRadius={props.borderRadius}
       backgroundColor={props.backgroundColor}
+      {...props.register}
     ></InputStyle>
   );
 }
