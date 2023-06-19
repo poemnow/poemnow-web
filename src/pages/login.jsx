@@ -120,6 +120,32 @@ async function login(id, password) {
   return await response.json();
 }
 
+// 카카오 로그인 함수
+async function kakaoLogin() {
+  try {
+    const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
+    const redirect_url = "http://localhost:3000/auth";
+    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${redirect_url}&response_type=code`;
+    window.open(kakaoURL, "_self");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// 네이버 로그인 함수
+async function naverLogin() {
+  console.log("naver");
+  const response = await axios({
+    method: "GET",
+    url: "http://localhost:8080/login/oauth",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  console.log(await response.json());
+}
+
 const Login = () => {
   // react-hook-form에서 사용할 함수들을 가져온다.
   const {
@@ -133,6 +159,15 @@ const Login = () => {
   // 로그인 버튼을 눌렀을 때, 실행되는 함수
   const onSubmit = (data) => {
     onSignIn(data);
+  };
+
+  const naverLogin = () => {
+    alert("naver");
+  };
+
+  const onClickKakaoLogin = () => {
+    // console.log("kakao");
+    kakaoLogin();
   };
 
   return (
@@ -211,6 +246,7 @@ const Login = () => {
           color={"white"}
           radius={"16px"}
           padding={"16px 0px"}
+          onClick={naverLogin}
         >
           네이버로 로그인하기
         </Button>
@@ -219,6 +255,7 @@ const Login = () => {
           color={"var(--kakaoLabel)"}
           radius={"16px"}
           padding={"16px 0px"}
+          onClick={() => onClickKakaoLogin()}
         >
           카카오 로그인하기
         </Button>

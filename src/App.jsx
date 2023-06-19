@@ -15,6 +15,7 @@ import CommentCardList from "./components/Organisms/CommentCardList";
 import LikeTop from "./components/Templates/LikeTop";
 import FollowComponent from "./pages/followComponent";
 import LikeTab from "./components/Templates/LikeTab";
+import KakaoLogin from "./pages/api";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/withdraw1" element={<Withdraw />} />
           <Route path="/withdraw2" element={<Withdraw />} />
+          <Route path="/auth" element={<KakaoLogin />} />
           {/* <Route path="/updateProfile" element={<UpdateProfile />} /> */}
           {/* search 페이지를 위한 라우팅 */}
           {/* <Route path="/search" element={<Search />}>
