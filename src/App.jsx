@@ -15,6 +15,10 @@ import CommentCardList from "./components/Organisms/CommentCardList";
 import LikeTop from "./components/Templates/LikeTop";
 import FollowComponent from "./pages/followComponent";
 import LikeTab from "./components/Templates/LikeTab";
+import KakaoLogin from "./pages/api";
+import ChangePassword from "./pages/changePassword";
+import FindPassword from "./pages/findPassword";
+import FindId from "./pages/findId";
 
 function App() {
   return (
@@ -32,6 +36,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/withdraw1" element={<Withdraw />} />
           <Route path="/withdraw2" element={<Withdraw />} />
+          <Route path="/auth" element={<KakaoLogin />} />
+          <Route path="/changePassword" element={<ChangePassword />} />
+          <Route path="/findPassword" element={<FindPassword />} />
+          <Route path="/findId" element={<FindId />} />
           {/* <Route path="/updateProfile" element={<UpdateProfile />} /> */}
           {/* search 페이지를 위한 라우팅 */}
           {/* <Route path="/search" element={<Search />}>

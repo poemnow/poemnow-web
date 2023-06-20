@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../components/Atoms/Button";
 import Input from "../components/Atoms/Input";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 import Header from "../components/Organisms/Header";
-import FitContentButton from "../components/Atoms/FitContentButton";
 import Error from "../components/Atoms/Error";
 import Label from "../components/Atoms/Label";
 import { getValue } from "@testing-library/user-event/dist/utils";
 import H5 from "../components/Atoms/H5";
 import H3 from "../components/Atoms/H3";
+import axios from "axios";
+import { useQueryClient } from "react-query";
+import { useSignIn } from "../hooks/useSignIn";
 
 // const LS_KEY_ID = "LS_KEY_ID";
 // const LS_KEY_SAVE_ID_FLAG = "LS_KEY_SAVE_ID_FLAG";
@@ -101,16 +103,71 @@ const OrText = styled.div`
     line-height: 0px;
   }
 `;
+// 로그인 실행 함수 id, password를 받아서 프로미스를 반환한다.
+async function login(id, password) {
+  const response = await axios({
+    method: "POST",
+    url: "http://localhost:8080/api/login",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id, password }),
+  });
+
+  if (!response.ok) {
+  }
+
+  return await response.json();
+}
+
+// 카카오 로그인 함수
+async function kakaoLogin() {
+  try {
+    const REST_API_KEY = process.env.REACT_APP_KAKAO_REST_API_KEY;
+    const redirect_url = "http://localhost:3000/auth";
+    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${redirect_url}&response_type=code`;
+    window.open(kakaoURL, "_self");
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// 네이버 로그인 함수
+async function naverLogin() {
+  console.log("naver");
+  const response = await axios({
+    method: "GET",
+    url: "http://localhost:8080/login/oauth",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  console.log(await response.json());
+}
 
 const Login = () => {
+  // react-hook-form에서 사용할 함수들을 가져온다.
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  //
+  const onSignIn = useSignIn();
 
+  // 로그인 버튼을 눌렀을 때, 실행되는 함수
   const onSubmit = (data) => {
-    alert(JSON.stringify(data));
+    onSignIn(data);
+  };
+
+  const naverLogin = () => {
+    alert("naver");
+  };
+
+  const onClickKakaoLogin = () => {
+    // console.log("kakao");
+    kakaoLogin();
   };
 
   return (
@@ -122,14 +179,14 @@ const Login = () => {
       <FormStyled onSubmit={handleSubmit(onSubmit)}>
         <InputSet>
           <Input
-            id="id"
+            id="userId"
             type="text"
             placeholder="아이디를 입력하세요"
             placeholderColor={"var(--gray-400)"}
             border={"1px solid var(--gray-100)"}
             borderRadius={"16px"}
             backgroundColor={"var(--gray-100)"}
-            register={register("id", {
+            register={register("userId", {
               required: "아이디는 필수 입력 사항입니다",
               minLength: {
                 value: 4,
@@ -141,7 +198,7 @@ const Login = () => {
               },
             })}
           />
-          <Error>{errors?.id?.message}</Error>
+          <Error>{errors?.userId?.message}</Error>
         </InputSet>
         <InputSet>
           <Input
@@ -189,6 +246,7 @@ const Login = () => {
           color={"white"}
           radius={"16px"}
           padding={"16px 0px"}
+          onClick={naverLogin}
         >
           네이버로 로그인하기
         </Button>
@@ -197,6 +255,7 @@ const Login = () => {
           color={"var(--kakaoLabel)"}
           radius={"16px"}
           padding={"16px 0px"}
+          onClick={() => onClickKakaoLogin()}
         >
           카카오 로그인하기
         </Button>
