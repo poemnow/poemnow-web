@@ -5,7 +5,7 @@ import Register from "./pages/register";
 import MyPage from "./pages/myPage";
 import Poem from "./pages/poem";
 import NotFound from "./pages/404";
-import Search from "./pages/Search";
+import Search from "./pages/SearchPage";
 import Withdraw from "./pages/withdraw1";
 import TagSearchList from "./components/etc/TagSearchList";
 import Detail from "./components/etc/Detail";
@@ -42,10 +42,10 @@ function App() {
           <Route path="/findId" element={<FindId />} />
           {/* <Route path="/updateProfile" element={<UpdateProfile />} /> */}
           {/* search 페이지를 위한 라우팅 */}
-          {/* <Route path="/search" element={<Search />}>
+          <Route path="/search" element={<Search />}/>
             <Route path="tag" element={<TagSearchList />}>
               <Route path="detail" element={<Detail />}></Route>
-            </Route> */}
+            </Route>
           {/* <Route path="/poem"></Route>
 						<Route path="/write"></Route>
 						<Route path="/book"></Route> */}

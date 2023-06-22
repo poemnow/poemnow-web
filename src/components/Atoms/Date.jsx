@@ -6,6 +6,7 @@ const DateStyled = styled.div`
   color: var(--gray-400);
   display: flex;
   align-items: center;
+  white-space: nowrap;
 `;
 
 function Date({ children }) {

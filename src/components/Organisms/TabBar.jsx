@@ -1,5 +1,7 @@
+import React from "react";
 import styled from "styled-components";
 import Tab from "../Molecules/Tab";
+
 
 const TabBarContainer = styled.ul`
   display: flex;
@@ -9,20 +11,25 @@ const TabBarContainer = styled.ul`
   height: 64px;
 `;
 
-export default function TabBar({ children }) {
+export const tabList = ["시", "작가"];
+
+export default function TabBar({ state, setState }) {
+
+  const handleTabClick = (selectedTab) => {
+    setState(selectedTab);
+  };
+
   return (
     <TabBarContainer>
-      {children}
-      {/* {TabList &&
-        TabList.map((tab, index) => {
-          return (
-            <li key={index}>
-              <Tab matchWord={tab} index={2}>
-                {tab}
-              </Tab>
-            </li>
-          );
-        })} */}
+      {tabList.map((tab, index) => (
+        <li key={index}>
+          <div onClick={() => handleTabClick(tab)}>
+          <Tab matchWord={tab} index={2} state={state} handleTabClick={handleTabClick}>
+            {tab}
+          </Tab>
+          </div>
+        </li>
+      ))}
     </TabBarContainer>
   );
 }

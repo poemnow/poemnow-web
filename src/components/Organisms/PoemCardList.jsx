@@ -7,7 +7,7 @@ const PoemCardListContainer = styled.div`
   grid-gap: 20px;
 `;
 
-const PoemCardList = ({ poemList }) => {
+const PoemCardList = ({ poemList,keyword }) => {
   return (
     <PoemCardListContainer>
       {poemList &&
@@ -17,6 +17,7 @@ const PoemCardList = ({ poemList }) => {
             poem={content}
             user={content.writer}
             commentCnt={content.commentCnt}
+            searchTerm={keyword}
           />
         ))}
     </PoemCardListContainer>

@@ -1,3 +1,4 @@
+import React from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import H6 from "../Atoms/H6";
@@ -9,6 +10,7 @@ const TabContainer = styled.div`
   width: 128px;
   flex: 1;
   padding: 16px 0;
+  font-size: var(--mobile--H5--medium);
   border-bottom: ${(props) =>
     props.isHere ? "2px solid var(--primary)" : "2px solid var(--gray-200)"};
 `;
@@ -21,16 +23,16 @@ const TabContainer = styled.div`
  * matchWord={tag} , index={2}로 정하면 된다.
  */
 
-export default function Tab({ children, matchWord, index, state, setState }) {
+export default function Tab({ children, matchWord, index, state, handleTabClick }) {
   const location = useLocation();
   const curUrl = location.pathname.split("/").at(index);
 
   const onClick = () => {
-    setState(matchWord);
+    handleTabClick(matchWord);
   };
 
   return (
-    <TabContainer isHere={curUrl === matchWord}>
+    <TabContainer isHere={state === matchWord}>
       <H6 onClick={onClick}>{children}</H6>
     </TabContainer>
   );

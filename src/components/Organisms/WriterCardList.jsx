@@ -7,11 +7,14 @@ const WriterCardListContainer = styled.div`
   grid-gap: 20px;
 `;
 
-function WriterCardList({ users }) {
+function WriterCardList({ users, keyword }) {
   return (
     <WriterCardListContainer>
-      {users.map((user) => (
-        <WriterCard key={user.id} user={user} />
+      {users && users.map((user) => (
+        
+        <WriterCard key={user.id} user={user} 
+        searchTerm={keyword}
+        />
       ))}
     </WriterCardListContainer>
   );

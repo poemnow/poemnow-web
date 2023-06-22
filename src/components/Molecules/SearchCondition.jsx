@@ -6,7 +6,7 @@ const StyledSearchCondition = styled.div`
 
 const StyledSpan = styled.span`
   margin-right: 20px;
-  font-size: var(--mobile-label-medium);
+  font-size: var(--mobile-label);
   width: 100px;
   height: 32px;
   cursor: pointer;
