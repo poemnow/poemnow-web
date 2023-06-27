@@ -10,6 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../components/Organisms/Header";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSignUp } from "../hooks/useSignUp";
+import axios from "axios";
 
 const RegisterContainer = styled.div`
   padding: 0px 16px;
@@ -62,7 +63,19 @@ function Register() {
 
   const getCertification = (event) => {
     event.preventDefault();
-    alert("인증번호 받기");
+
+    const newForm = new FormData();
+    newForm.append("email", getValues("email"));
+
+    console.log(getValues("email"));
+    axios({
+      method: "POST",
+      url: "http://localhost:8080/service/mail",
+      data: newForm,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   };
 
   return (
